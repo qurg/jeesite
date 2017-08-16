@@ -3,6 +3,11 @@
  */
 package com.thinkgem.jeesite.modules.cms.web.front;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -10,8 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.collect.Maps;
+import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.cms.utils.WiexinSignUtil;
+import com.thinkgem.jeesite.modules.sys.entity.User;
+import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
+import com.thinkgem.jeesite.test.entity.TestData;
 
 /**
  * 测试Controller
@@ -65,6 +75,23 @@ public class WeixinController extends BaseController {
 				"<Content><![CDATA[你好]]></Content>" +
 				"</xml>");
 		return result.toString();
+	}
+	
+	
+	@RequestMapping(value = "getUser", method = RequestMethod.GET)
+	@ResponseBody
+	public String getUser(TestData testData, HttpServletRequest request){
+		System.out.println("------start request--------");
+		System.out.println(testData.getName());
+		
+		List<User> dataList = new ArrayList<>();
+		dataList.add(UserUtils.getUser());
+		Map<String, Object> map = Maps.newHashMap();
+		map.put("id", 1);
+		map.put("name", "hello");
+		map.put("lists", dataList);
+		String json = JsonMapper.getInstance().toJson(map);
+		return json;
 	}
 	
 	
