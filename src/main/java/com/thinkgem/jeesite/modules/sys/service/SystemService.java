@@ -33,7 +33,6 @@ import com.thinkgem.jeesite.modules.sys.entity.Menu;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
-import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm;
 import com.thinkgem.jeesite.modules.sys.utils.LogUtils;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
@@ -59,7 +58,6 @@ public class SystemService extends BaseService implements InitializingBean {
 	@Autowired
 	private SessionDAO sessionDao;
 	@Autowired
-	private SystemAuthorizingRealm systemRealm;
 	
 	public SessionDAO getSessionDao() {
 		return sessionDao;
