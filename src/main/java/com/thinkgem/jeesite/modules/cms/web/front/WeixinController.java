@@ -83,7 +83,7 @@ public class WeixinController extends BaseController {
 		System.out.println("------start request--------");
 		System.out.println(testData.getName());
 		
-		List<User> dataList = new ArrayList<>();
+		List<User> dataList = new ArrayList<User>();
 		dataList.add(UserUtils.getUser());
 		Map<String, Object> map = Maps.newHashMap();
 		map.put("id", 1);
